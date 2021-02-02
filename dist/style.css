@@ -49,3 +49,67 @@ h2 span {
 	font-weight: 700;
 	margin: 0;
 }
+
+/*
+Section
+=======
+*/
+
+label,
+img,
+li,
+input[type='checkbox'] {
+	cursor: pointer;
+}
+
+ol {
+	list-style: decimal inside none;
+}
+
+input[type='checkbox'] {
+	margin: 0.4em 0.8em;
+}
+
+ol li {
+	transition: 0.2s;
+	border-radius: 2em;
+	background-color: #39c08b;
+	color: white;
+	width: auto;
+	margin: 0.6em auto;
+	border: 2px solid #288963;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+ol li:nth-child(odd) {
+	color: #726a63;
+	background: #f9f9f9;
+	border: 2px solid #968d86;
+}
+
+ol li:hover {
+	background: #288963;
+	border: 2px solid #39c08b;
+}
+
+ol li:nth-child(odd):hover {
+	color: #fff;
+	background: #968d86;
+	border: 2px solid #f9f9f9;
+}
+
+li > div {
+	display: flex;
+	align-items: center;
+}
+
+svg {
+	margin: auto 0.8em;
+}
+
+svg:nth-child(odd) {
+	color: #726a63;
+	background: #f9f9f9;
+}

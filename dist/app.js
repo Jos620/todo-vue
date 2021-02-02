@@ -1,11 +1,9 @@
-const { default: Vue } = require("vue");
-
 new Vue({
     el: '#app',
     data: {
         todoList: [
             { text: 'Fazer o header'            , done: true },
-            { text: 'Fazer uma seção dos todos' , done: false },
+            { text: 'Fazer uma seção dos todos' , done: true },
             { text: 'Form para novos todos'     , done: false },
             { text: 'Adicionar todo'            , done: false },
             { text: 'Deletar todo'              , done: false },
