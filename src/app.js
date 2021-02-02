@@ -4,7 +4,7 @@ new Vue({
     el: '#app',
     data: {
         todoList: [
-            { text: 'Fazer o header'            , done: false },
+            { text: 'Fazer o header'            , done: true },
             { text: 'Fazer uma seção dos todos' , done: false },
             { text: 'Form para novos todos'     , done: false },
             { text: 'Adicionar todo'            , done: false },
