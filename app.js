@@ -1,23 +1,34 @@
+//* Firebase
+//* ========
+
+var firebaseConfig = {
+    apiKey: "AIzaSyBniljKXjAIQoppNToQOWIF37uJ1yFIhSo",
+    authDomain: "todo-ce8db.firebaseapp.com",
+    projectId: "todo-ce8db",
+    storageBucket: "todo-ce8db.appspot.com",
+    messagingSenderId: "542113504197",
+    appId: "1:542113504197:web:3271ee0b7b7fbf981649ac",
+    measurementId: "G-GMTZX6Q6XL"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+const db = firebase.firestore();
+db.settings({ timestampsInSnapshots: true });
+
+//* Vue
+//* ===
+
 new Vue({
     el: '#app',
     data: {
         newTodo: '',
-        todoList: [
-            { text: 'Fazer o header'            , done: true },
-            { text: 'Fazer uma seção dos todos' , done: true },
-            { text: 'Form para novos todos'     , done: true },
-            { text: 'Adicionar todo'            , done: true },
-            { text: 'Deletar todo'              , done: true },
-            { text: 'Completar todo'            , done: true },
-            { text: 'Filtrar todos'             , done: true },
-            { text: 'Validar input'             , done: true },
-            { text: 'Firebase / Firestore'      , done: false },
-        ]
+        todoList: []
     },
     methods: {
         addTodo() {
             if (this.validateInput()) {
-                this.todoList.push({
+                db.collection('todos').add({
                     text: this.newTodo,
                     done: false
                 })
@@ -28,9 +39,14 @@ new Vue({
         },
         delTodo(todo) {
             this.todoList = this.todoList.filter((item) => item !== todo)
+            db.collection('todos').doc(todo.id).delete()
         },
         toggleTodo(todo) {
-            todo.done = !todo.done
+            let invertDone = !todo.done
+            todo.done = invertDone
+            db.collection('todos').doc(todo.id).update({
+                done: invertDone
+            })
             this.sortList()
         },
         sortList() {
@@ -49,6 +65,18 @@ new Vue({
         }
     },
     created: function() {
-        this.sortList()
+        db.collection('todos').onSnapshot((res) => {
+            const changes = res.docChanges();
+
+            changes.forEach((change) => {
+                if (change.type === 'added') {
+                    this.todoList.push({
+                        ...change.doc.data(),
+                        id: change.doc.id
+                    })
+                    this.sortList()
+                }
+            })
+        })
     }
 })

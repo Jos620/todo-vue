@@ -18,7 +18,7 @@ html(lang="en")
                         span(v-else) +
             section
                 ol
-                    li(v-for="todo in filteredList" :key="todo.text" @click="toggleTodo(todo)" v-if="checkIfTodoExists")
+                    li(v-for="todo in filteredList" :key="todo.text" @click="toggleTodo(todo)")
                         div
                             input(type="checkbox" :checked="todo.done")
                             label
@@ -30,4 +30,6 @@ html(lang="en")
 
 
         script(src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js")
+        script(src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js")
+        script(src="https://www.gstatic.com/firebasejs/8.2.5/firebase-firestore.js")
         script(src="app.js")
