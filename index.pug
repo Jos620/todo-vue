@@ -16,6 +16,12 @@ html(lang="en")
                     button(@click.prevent="addTodo")
                         span(v-if="newTodo == ''") {{ todoList.length }}
                         span(v-else) +
+
+            hr
+
+            section(v-if="todoList.length < 1" id="emptyList")
+                span Nenhuma tarefa
+
             section
                 ol
                     li(v-for="todo in filteredList" :key="todo.text" @click="toggleTodo(todo)")

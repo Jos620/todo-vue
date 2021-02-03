@@ -82,6 +82,19 @@ button:hover {
 }
 
 /*
+Empty
+=====
+*/
+
+#emptyList {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.2em;
+	color: #fff;
+}
+
+/*
 Section
 =======
 */
