@@ -17,7 +17,7 @@
       </header>
       <section>
         <ol>
-          <li v-for="todo in todoList" :key="todo.text" @click="toggleTodo(todo)">
+          <li v-for="todo in filteredList" :key="todo.text" @click="toggleTodo(todo)">
             <div>
               <input type="checkbox" :checked="todo.done"/>
               <label>

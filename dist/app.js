@@ -9,7 +9,7 @@ new Vue({
             { text: 'Adicionar todo'            , done: true },
             { text: 'Deletar todo'              , done: true },
             { text: 'Completar todo'            , done: true },
-            { text: 'Filtrar todos'             , done: false },
+            { text: 'Filtrar todos'             , done: true },
             { text: 'Validar input'             , done: false },
             { text: 'Firebase / Firestore'      , done: false },
         ]
@@ -34,6 +34,11 @@ new Vue({
         },
         sortList() {
             this.todoList.sort((a, b) => a.done - b.done)
+        }
+    },
+    computed: {
+        filteredList() {
+            return this.todoList.filter((todo) => todo.text.toLowerCase().match(this.newTodo.toLowerCase()))
         }
     },
     created: function() {
