@@ -7,7 +7,7 @@ new Vue({
             { text: 'Fazer uma seção dos todos' , done: true },
             { text: 'Form para novos todos'     , done: true },
             { text: 'Adicionar todo'            , done: true },
-            { text: 'Deletar todo'              , done: false },
+            { text: 'Deletar todo'              , done: true },
             { text: 'Completar todo'            , done: false },
             { text: 'Paleta de cores'           , done: false },
             { text: 'Criar os estilos'          , done: false },
@@ -26,6 +26,9 @@ new Vue({
             } else {
                 alert('Você não pode adicionar uma tarefa vazia!')
             }
+        },
+        delTodo(todo) {
+            this.todoList = this.todoList.filter((item) => item !== todo)
         }
     }
 })
