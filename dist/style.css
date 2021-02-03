@@ -136,6 +136,10 @@ li > div {
 	align-items: center;
 }
 
+del {
+	color: rgba(0, 0, 0, 0.3);
+}
+
 svg {
 	margin: auto 0.8em;
 }
