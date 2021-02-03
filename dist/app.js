@@ -1,6 +1,7 @@
 new Vue({
     el: '#app',
     data: {
+        newTodo: '',
         todoList: [
             { text: 'Fazer o header'            , done: true },
             { text: 'Fazer uma seção dos todos' , done: true },
