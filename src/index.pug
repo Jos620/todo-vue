@@ -13,7 +13,7 @@ html(lang="en")
                     span ITO
                 form
                     input(type="text" placeholder="Descrição" v-model="newTodo" )
-                    button
+                    button(@click.prevent="addTodo")
                         span(v-if="newTodo == ''") {{ todoList.length }}
                         span(v-else) +
             section

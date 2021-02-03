@@ -12,7 +12,7 @@
         <h2>TODO<span>ITO</span></h2>
         <form>
           <input type="text" placeholder="Descrição" v-model="newTodo"/>
-          <button><span v-if="newTodo == ''">{{ todoList.length }}</span><span v-else="v-else">+</span></button>
+          <button @click.prevent="addTodo"><span v-if="newTodo == ''">{{ todoList.length }}</span><span v-else="v-else">+</span></button>
         </form>
       </header>
       <section>
