@@ -27,6 +27,16 @@ new Vue({
         },
         delTodo(todo) {
             this.todoList = this.todoList.filter((item) => item !== todo)
+        },
+        toggleTodo(todo) {
+            todo.done = !todo.done
+            this.sortList()
+        },
+        sortList() {
+            this.todoList.sort((a, b) => a.done - b.done)
         }
+    },
+    created: function() {
+        this.sortList()
     }
 })
