@@ -26,6 +26,9 @@ new Vue({
             } else {
                 alert('Você não pode adicionar uma tarefa vazia!')
             }
+        },
+        delTodo(todo) {
+            this.todoList = this.todoList.filter((item) => item !== todo)
         }
     }
 })
