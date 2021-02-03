@@ -10,19 +10,20 @@ new Vue({
             { text: 'Deletar todo'              , done: true },
             { text: 'Completar todo'            , done: true },
             { text: 'Filtrar todos'             , done: true },
-            { text: 'Validar input'             , done: false },
+            { text: 'Validar input'             , done: true },
             { text: 'Firebase / Firestore'      , done: false },
         ]
     },
     methods: {
         addTodo() {
-            if (this.newTodo.trim() != '') {
+            if (this.validateInput()) {
                 this.todoList.push({
                     text: this.newTodo,
                     done: false
                 })
+                this.newTodo = ''
             } else {
-                alert('Você não pode adicionar uma tarefa vazia!')
+                alert('Você não pode adicionar uma tarefa vazia ou duplicada!')
             }
         },
         delTodo(todo) {
@@ -34,6 +35,12 @@ new Vue({
         },
         sortList() {
             this.todoList.sort((a, b) => a.done - b.done)
+        },
+        checkIfTodoExists() {
+            return this.todoList.some((todo) => todo.text.toLowerCase() === this.newTodo.toLowerCase().trim())
+        },
+        validateInput() {
+            return !(!this.newTodo.trim() || this.checkIfTodoExists());
         }
     },
     computed: {

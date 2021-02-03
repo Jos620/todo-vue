@@ -18,7 +18,7 @@ html(lang="en")
                         span(v-else) +
             section
                 ol
-                    li(v-for="todo in filteredList" :key="todo.text" @click="toggleTodo(todo)")
+                    li(v-for="todo in filteredList" :key="todo.text" @click="toggleTodo(todo)" v-if="checkIfTodoExists")
                         div
                             input(type="checkbox" :checked="todo.done")
                             label
